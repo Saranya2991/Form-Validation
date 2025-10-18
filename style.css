@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-left: 200px;
+    line-height: 40px;
+    width: 450px;
+    height: 450px; 
+    background-color: aquamarine;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+h1{
+    margin-left: 20px;
+}
+input{
+    padding: 10px;
+    cursor: pointer;
+}
+input:hover{
+    border-color: rgb(17, 231, 160);
+}
+button{
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 15px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(67, 70, 234);
+    font-size: medium;
+    color: white;
+}
+button:disabled {
+      background-color: rgb(157, 160, 243);
+      cursor: not-allowed;
+    }
+    .error{
+        color: red;
+    }

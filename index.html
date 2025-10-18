@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-container">
+            <h1>Form Validation</h1>
+            <table>
+                <tr>
+                    <td>Name : </td>
+                    <td><input type="text" placeholder="Enter Your Name" id="name" required>
+                        <div id="nameError" class="error"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email : </td>
+                    <td><input type="email" placeholder="Enter Your Email" id="email" required>
+                        <div id="emailError" class="error"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Password : </td>
+                    <td><input type="password" placeholder="Enter Your Password" id="password" required>
+                        <div id="passwordError" class="error"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button type="submit" id="submit" disabled>Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const submit = document.getElementById('submit');
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        function validateName() {
+            if (name.value.trim() === '') {
+                nameError.textContent = 'Name cannot be empty.';
+                return false;
+            } else {
+                nameError.textContent = '';
+                return true;
+            }
+        }
+        function validateEmail() {
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.value.match(emailPattern)) {
+                emailError.textContent = 'Enter a valid email address.';
+                return false;
+            } else {
+                emailError.textContent = '';
+                return true;
+            }
+        }
+
+        function validatePassword() {
+            if (password.value.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters.';
+                return false;
+            } else {
+                passwordError.textContent = '';
+                return true;
+            }
+        }
+        function validateForm() {
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isPasswordValid = validatePassword();
+            submit.disabled = !(isNameValid && isEmailValid && isPasswordValid);
+        }
+
+        name.addEventListener('input', validateForm);
+        email.addEventListener('input', validateForm);
+        password.addEventListener('input', validateForm);
+
+        document.getElementById('form-container').addEventListener('submit', function (event) {
+            event.preventDefault();
+            alert('Registration successful!');
+        });
+    </script>
+</body>
+
+</html>
